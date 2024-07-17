@@ -2,8 +2,11 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.by;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeForm {
@@ -28,6 +31,18 @@ public class PracticeForm {
         $("#dateOfBirthInput").click();
         $(by("aria-label","Choose Friday, July 19th, 2024")).click();
         $("#subjectsInput").setValue("Commerce").pressEnter();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
+        File file = new File("src/test/resources/Toka.png");
+        $("#uploadPicture").uploadFile(file);
+        $("#currentAddress").setValue("Kabardino_Balkaria, Baksan");
+        $("#state").click();
+        $("#stateCity-wrapper").$(byText("NCR")).click();
+        $("#city").click();
+        $("#stateCity-wrapper").$(byText("Noida")).click();
+        $("#submit").click();
+
+
+
         //$("#subjectsContainer").setValue("English");
 
         /*$("#permanentAddress").setValue("Sity Baksan");
