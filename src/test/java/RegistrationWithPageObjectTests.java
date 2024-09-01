@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.by;
 import static com.codeborne.selenide.Selectors.byText;
@@ -46,6 +47,10 @@ public class RegistrationWithPageObjectTests {
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Noida")).click();
         $("#submit").click();
+        //модальное окно
+        $(".modal-dialog").shouldHave(appear);
+        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
+
         $("tbody > tr:nth-child(1) > td:nth-child(2)").shouldHave(text("Aslan"));
         $("tr:nth-child(2) > td:nth-child(2)").shouldHave(text("Askarda@test.com"));
         $("tbody > tr:nth-child(3) > td:nth-child(2)").shouldHave(text("Male"));
