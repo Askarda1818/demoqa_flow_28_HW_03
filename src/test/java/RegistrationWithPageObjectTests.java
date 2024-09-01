@@ -2,6 +2,7 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import pages.RegistrarionPage;
 
 import java.io.File;
 
@@ -10,8 +11,11 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.by;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
+import static pages.RegistrarionPage.*;
 
 public class RegistrationWithPageObjectTests {
+
+    RegistrarionPage registrarionPage = new RegistrarionPage();
     @BeforeAll
     static  void beforeAll(){
         Configuration.browserSize="1928x1080";
@@ -27,12 +31,13 @@ public class RegistrationWithPageObjectTests {
     }
     @Test
     void practiceFormTest() {
-        open("/automation-practice-form");
-        $("#firstName").setValue("Aslan");
-        $("#lastName").setValue("Kardanov");
-        $("#userEmail").setValue("Askarda@test.com");
-        $(".custom-control-label").click();
-        $("#userNumber").setValue("89280000000");
+       registrarionPage.openPage()
+               .setFirstName("Alex")
+               .setlastName("Kardanov")
+               .setUserEmail("Askarda@test.com")
+               .setGenterWrapper("Other")
+               .setUserNumber("89280000000");
+
         $("#dateOfBirthInput").click();
         $(by("aria-label","Choose Tuesday, September 24th, 2024")).click();
         $("#subjectsInput").setValue("Commerce").pressEnter();
