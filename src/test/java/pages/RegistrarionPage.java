@@ -15,10 +15,15 @@ public class RegistrarionPage {
             userEmailInput=$("#userEmail"),
             genterWrapperInput = $("#genterWrapper"),
             userNumberInput = $("#userNumber"),
-            calendarInput = $("#dateOfBirthInput"),
-            subjectsInput = $("#subjectsInput"),
-            hobbiesInput = $("#hobbiesWrapper"),
-            uploadPictureInput= $("#uploadPicture")
+            userCalendarInput = $("#dateOfBirthInput"),
+            userSubjectsInput = $("#subjectsInput"),
+            userHobbiesInput = $("#hobbiesWrapper"),
+            userUploadPictureInput= $("#uploadPicture"),
+            userCurrentAddress = $("#currentAddress"),
+            userState = $("#state"),
+            userCity = $("#city"),
+            submitClick = $("#submit")
+
     ;
      CalendarComponent calendarComponent = new CalendarComponent();
 
@@ -43,7 +48,7 @@ public class RegistrarionPage {
         return  this;
     }
     public  RegistrarionPage setGenterWrapper(String value){
-        genterWrapperInput.$(byText(value));
+        genterWrapperInput.$(byText(value)).click();
         return  this;
     }
     public  RegistrarionPage setUserNumber(String value){
@@ -52,23 +57,47 @@ public class RegistrarionPage {
     }
 
     public  RegistrarionPage setDateOfBirth(String day, String month, String year){
-        calendarInput.click();
+        userCalendarInput.click();
         calendarComponent.setDate(day,month,year);
         return  this;
     }
-    public  RegistrarionPage setsubjects(String value){
-        subjectsInput.setValue(value).pressEnter();
+    public  RegistrarionPage setSubjects(String value){
+        userSubjectsInput.setValue(value).pressEnter();
         return  this;
     }
     public  RegistrarionPage setHobbiesWrapper(String value){
-        subjectsInput.setValue(value).$(byText(value)).click();
+        userHobbiesInput.$(byText(value)).click();
         return  this;
     }
 
     // метод для загрузки файла
     public RegistrarionPage setUploadPicture(String pathname){
         File file = new File(pathname);
-        uploadPictureInput.uploadFile(file);
+        userUploadPictureInput.uploadFile(file);
+        return  this;
+    }
+    //метод для ввода адреса региона
+    public  RegistrarionPage setCurrentAddress(String value){
+        userCurrentAddress.setValue(value);
+        return  this;
+    }
+
+    // метод ввод названия штата
+    public  RegistrarionPage setState(String value){
+        userState.click();
+        userState.$(byText(value)).click();
+        return  this;
+    }
+
+    public  RegistrarionPage setCity(String value){
+        userCity.click();
+        userCity.$(byText(value)).click();
+        return  this;
+    }
+
+    // клик по кнопке
+    public  RegistrarionPage setSubmitClick(){
+        submitClick.click();
         return  this;
     }
 

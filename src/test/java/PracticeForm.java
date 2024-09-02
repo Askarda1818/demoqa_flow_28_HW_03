@@ -42,6 +42,7 @@ public class PracticeForm {
         // здесь нужен скролл
         $("#submit").scrollTo();
         $("#state").click();
+       // $("#state").$(byText("NCR")).click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Noida")).click();

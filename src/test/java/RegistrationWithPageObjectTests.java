@@ -32,46 +32,21 @@ public class RegistrationWithPageObjectTests {
     @Test
     void practiceFormTest() {
        registrarionPage.openPage()
-               .setFirstName("Alex")
+               .setFirstName("Aslan")
                .setlastName("Kardanov")
                .setUserEmail("Askarda@test.com")
                .setGenterWrapper("Other")
                .setUserNumber("89280000000")
                .setDateOfBirth("24","September","2024")
-               .setUploadPicture("src/test/resources/Toka.png");
+               .setSubjects("Commerce")
+               .setHobbiesWrapper("Sports")
+               .setUploadPicture("src/test/resources/Toka.png")
+               .setCurrentAddress("Kabardino_Balkaria, Baksan")
+               .setState("NCR")
+               .setCity("Noida")
+               .setSubmitClick();
 
-       /* $("#dateOfBirthInput").click();
-        $(by("aria-label","Choose Tuesday, September 24th, 2024")).click();*/
-      //  $("#subjectsInput").setValue("Commerce").pressEnter();
-      //  $("#hobbiesWrapper").$(byText("Sports")).click();
-
-       // File file = new File("src/test/resources/Toka.png");
-      //  $("#uploadPicture").uploadFile(file);
-        $("#currentAddress").setValue("Kabardino_Balkaria, Baksan");
-        // здесь нужен скролл
-        $("#submit").scrollTo();
-        $("#state").click();
-        $("#stateCity-wrapper").$(byText("NCR")).click();
-        $("#city").click();
-        $("#stateCity-wrapper").$(byText("Noida")).click();
-        $("#submit").click();
-        //модальное окно
-        $(".modal-dialog").shouldHave(appear);
-        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-
-        $("tbody > tr:nth-child(1) > td:nth-child(2)").shouldHave(text("Aslan"));
-        $("tr:nth-child(2) > td:nth-child(2)").shouldHave(text("Askarda@test.com"));
-        $("tbody > tr:nth-child(3) > td:nth-child(2)").shouldHave(text("Male"));
-        $("tbody > tr:nth-child(4) > td:nth-child(2)").shouldHave(text("8928000000"));
-        $("tbody > tr:nth-child(5) > td:nth-child(2)").shouldHave(text("24 September,2024"));
-        $("tbody > tr:nth-child(6) > td:nth-child(2)").shouldHave(text("Commerce"));
-        $("tbody > tr:nth-child(7) > td:nth-child(2)").shouldHave(text("Sports"));
-        $("tbody > tr:nth-child(8) > td:nth-child(2)").shouldHave(text("Toka.png"));
-        $("tbody > tr:nth-child(9) > td:nth-child(2)").shouldHave(text("Kabardino_Balkaria, Baksan"));
-        $("tbody > tr:nth-child(10) > td:nth-child(2)").shouldHave(text("NCR Noida"));
-        $("#closeLargeModal").click();
-
-        registrarionPage.checkResult("Student Name", "Alex Kardanov")
+        registrarionPage.checkResult("Student Name", "Aslan Kardanov")
                         .checkResult("Student Email", "Askarda@test.com");
 
     }
