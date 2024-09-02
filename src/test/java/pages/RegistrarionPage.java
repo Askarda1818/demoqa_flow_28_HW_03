@@ -13,7 +13,10 @@ public class RegistrarionPage {
             userEmailInput=$("#userEmail"),
             genterWrapperInput = $("#genterWrapper"),
             userNumberInput = $("#userNumber"),
-            calendarInput = $("#dateOfBirthInput");
+            calendarInput = $("#dateOfBirthInput"),
+            subjectsInput = $("#subjectsInput"),
+            hobbiesInput = $("#hobbiesWrapper")
+    ;
      CalendarComponent calendarComponent = new CalendarComponent();
 
     public RegistrarionPage openPage(){
@@ -48,6 +51,14 @@ public class RegistrarionPage {
     public  RegistrarionPage setDateOfBirth(String day, String month, String year){
         calendarInput.click();
         calendarComponent.setDate(day,month,year);
+        return  this;
+    }
+    public  RegistrarionPage setsubjects(String value){
+        subjectsInput.setValue(value).pressEnter();
+        return  this;
+    }
+    public  RegistrarionPage setHobbiesWrapper(String value){
+        subjectsInput.setValue(value).$(byText(value)).click();
         return  this;
     }
 

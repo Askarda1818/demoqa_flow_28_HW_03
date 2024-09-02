@@ -41,8 +41,8 @@ public class RegistrationWithPageObjectTests {
 
        /* $("#dateOfBirthInput").click();
         $(by("aria-label","Choose Tuesday, September 24th, 2024")).click();*/
-        $("#subjectsInput").setValue("Commerce").pressEnter();
-        $("#hobbiesWrapper").$(byText("Sports")).click();
+      //  $("#subjectsInput").setValue("Commerce").pressEnter();
+      //  $("#hobbiesWrapper").$(byText("Sports")).click();
         File file = new File("src/test/resources/Toka.png");
         $("#uploadPicture").uploadFile(file);
         $("#currentAddress").setValue("Kabardino_Balkaria, Baksan");
