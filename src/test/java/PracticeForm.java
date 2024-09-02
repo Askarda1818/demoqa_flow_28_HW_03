@@ -23,6 +23,7 @@ public class PracticeForm {
     static  void afterAll(){
         closeWebDriver();
     }
+
     @Test
     void practiceFormTest() {
         open("/automation-practice-form");
@@ -32,7 +33,7 @@ public class PracticeForm {
         $(".custom-control-label").click();
         $("#userNumber").setValue("89280000000");
         $("#dateOfBirthInput").click();
-        $(by("aria-label","Choose Friday, July 19th, 2024")).click();
+        $(by("aria-label","Choose Tuesday, September 24th, 2024")).click();
         $("#subjectsInput").setValue("Commerce").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click();
         File file = new File("src/test/resources/Toka.png");
@@ -49,7 +50,7 @@ public class PracticeForm {
         $("tr:nth-child(2) > td:nth-child(2)").shouldHave(text("Askarda@test.com"));
         $("tbody > tr:nth-child(3) > td:nth-child(2)").shouldHave(text("Male"));
         $("tbody > tr:nth-child(4) > td:nth-child(2)").shouldHave(text("8928000000"));
-        $("tbody > tr:nth-child(5) > td:nth-child(2)").shouldHave(text("19 July,2024"));
+        $("tbody > tr:nth-child(5) > td:nth-child(2)").shouldHave(text("24 September,2024"));
         $("tbody > tr:nth-child(6) > td:nth-child(2)").shouldHave(text("Commerce"));
         $("tbody > tr:nth-child(7) > td:nth-child(2)").shouldHave(text("Sports"));
         $("tbody > tr:nth-child(8) > td:nth-child(2)").shouldHave(text("Toka.png"));

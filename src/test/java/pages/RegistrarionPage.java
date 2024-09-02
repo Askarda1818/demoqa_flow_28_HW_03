@@ -3,6 +3,8 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 
+import java.io.File;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -15,7 +17,8 @@ public class RegistrarionPage {
             userNumberInput = $("#userNumber"),
             calendarInput = $("#dateOfBirthInput"),
             subjectsInput = $("#subjectsInput"),
-            hobbiesInput = $("#hobbiesWrapper")
+            hobbiesInput = $("#hobbiesWrapper"),
+            uploadPictureInput= $("#uploadPicture")
     ;
      CalendarComponent calendarComponent = new CalendarComponent();
 
@@ -59,6 +62,13 @@ public class RegistrarionPage {
     }
     public  RegistrarionPage setHobbiesWrapper(String value){
         subjectsInput.setValue(value).$(byText(value)).click();
+        return  this;
+    }
+
+    // метод для загрузки файла
+    public RegistrarionPage setUploadPicture(String pathname){
+        File file = new File(pathname);
+        uploadPictureInput.uploadFile(file);
         return  this;
     }
 

@@ -37,14 +37,16 @@ public class RegistrationWithPageObjectTests {
                .setUserEmail("Askarda@test.com")
                .setGenterWrapper("Other")
                .setUserNumber("89280000000")
-               .setDateOfBirth("24","September","2024");
+               .setDateOfBirth("24","September","2024")
+               .setUploadPicture("src/test/resources/Toka.png");
 
        /* $("#dateOfBirthInput").click();
         $(by("aria-label","Choose Tuesday, September 24th, 2024")).click();*/
       //  $("#subjectsInput").setValue("Commerce").pressEnter();
       //  $("#hobbiesWrapper").$(byText("Sports")).click();
-        File file = new File("src/test/resources/Toka.png");
-        $("#uploadPicture").uploadFile(file);
+
+       // File file = new File("src/test/resources/Toka.png");
+      //  $("#uploadPicture").uploadFile(file);
         $("#currentAddress").setValue("Kabardino_Balkaria, Baksan");
         // здесь нужен скролл
         $("#submit").scrollTo();
