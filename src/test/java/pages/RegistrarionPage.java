@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -11,9 +12,9 @@ public class RegistrarionPage {
       lastNameInput = $("#lastName"),
             userEmailInput=$("#userEmail"),
             genterWrapperInput = $("#genterWrapper"),
-            userNumberInput = $("#userNumber")
-
-    ;
+            userNumberInput = $("#userNumber"),
+            calendarInput = $("#dateOfBirthInput");
+     CalendarComponent calendarComponent = new CalendarComponent();
 
     public RegistrarionPage openPage(){
         open("/automation-practice-form");
@@ -41,6 +42,17 @@ public class RegistrarionPage {
     }
     public  RegistrarionPage setUserNumber(String value){
         userNumberInput.setValue(value);
+        return  this;
+    }
+
+    public  RegistrarionPage setDateOfBirth(String day, String month, String year){
+        calendarInput.click();
+        calendarComponent.setDate(day,month,year);
+        return  this;
+    }
+
+    public  RegistrarionPage checkResult(String key, String value){
+        $(".table-responsive").$(byText(key)).parent().shouldHave(text(value));
         return  this;
     }
 

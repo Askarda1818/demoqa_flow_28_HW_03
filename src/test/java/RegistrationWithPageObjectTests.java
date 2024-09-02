@@ -36,10 +36,11 @@ public class RegistrationWithPageObjectTests {
                .setlastName("Kardanov")
                .setUserEmail("Askarda@test.com")
                .setGenterWrapper("Other")
-               .setUserNumber("89280000000");
+               .setUserNumber("89280000000")
+               .setDateOfBirth("24","September","2024");
 
-        $("#dateOfBirthInput").click();
-        $(by("aria-label","Choose Tuesday, September 24th, 2024")).click();
+       /* $("#dateOfBirthInput").click();
+        $(by("aria-label","Choose Tuesday, September 24th, 2024")).click();*/
         $("#subjectsInput").setValue("Commerce").pressEnter();
         $("#hobbiesWrapper").$(byText("Sports")).click();
         File file = new File("src/test/resources/Toka.png");
@@ -67,6 +68,9 @@ public class RegistrationWithPageObjectTests {
         $("tbody > tr:nth-child(9) > td:nth-child(2)").shouldHave(text("Kabardino_Balkaria, Baksan"));
         $("tbody > tr:nth-child(10) > td:nth-child(2)").shouldHave(text("NCR Noida"));
         $("#closeLargeModal").click();
+
+        registrarionPage.checkResult("Student Name", "Alex Kardanov")
+                        .checkResult("Student Email", "Askarda@test.com");
 
     }
 }
