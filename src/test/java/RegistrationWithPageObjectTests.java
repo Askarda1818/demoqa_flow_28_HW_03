@@ -3,6 +3,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.RegistrarionPage;
+import pages.components.ResultTableForma;
 
 import java.io.File;
 
@@ -16,6 +17,7 @@ import static pages.RegistrarionPage.*;
 public class RegistrationWithPageObjectTests {
 
     RegistrarionPage registrarionPage = new RegistrarionPage();
+    ResultTableForma resultTableForma = new ResultTableForma();
     @BeforeAll
     static  void beforeAll(){
         Configuration.browserSize="1928x1080";
@@ -45,9 +47,43 @@ public class RegistrationWithPageObjectTests {
                .setState("NCR")
                .setCity("Noida")
                .setSubmitClick();
+       //для себя
+        sleep(5000);
+        resultTableForma.successfulModalDialog()
+                .ResultTable("Aslan Kardanov","Askarda@test.com","Other","Mobile 8928000000",
+                "24 September,2024","Commerce","Sports","Toka.png","Kabardino_Balkaria, Baksan",
+                "NCR Noida");
 
-        registrarionPage.checkResult("Student Name", "Aslan Kardanov")
-                        .checkResult("Student Email", "Askarda@test.com");
 
     }
+
+
+    //негативный автотест - не заполняем форму сразу кликаем кнопку 'submit'
+    @Test
+    void negativepracticeFormTest(){
+        registrarionPage.openPage()
+                .setSubmitClick();
+        resultTableForma.notAppear();
+    }
+
+
+    //автотест на проверку минимального количества данных (т.е. заполнить Name, Gender,Mobile)
+    @Test
+    void minimumAmountDataTest(){
+        registrarionPage.openPage()
+                .setFirstName("Aslan")
+                .setlastName("Kardanov")
+                .setGenterWrapper("Other")
+                .setUserNumber("89280000000")
+                .setSubmitClick();
+        //для себя
+        sleep(5000);
+        resultTableForma.successfulModalDialog()
+                .ResultTable("Aslan Kardanov","","Other","Mobile 8928000000",
+                        "05 September,2024","","","","",
+                        "");
+
+    }
+
+
 }

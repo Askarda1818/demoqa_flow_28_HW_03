@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrarionPage {
     private SelenideElement  firstNameInput = $("#firstName"),
-      lastNameInput = $("#lastName"),
+            lastNameInput = $("#lastName"),
             userEmailInput=$("#userEmail"),
             genterWrapperInput = $("#genterWrapper"),
             userNumberInput = $("#userNumber"),
@@ -22,7 +22,11 @@ public class RegistrarionPage {
             userCurrentAddress = $("#currentAddress"),
             userState = $("#state"),
             userCity = $("#city"),
-            submitClick = $("#submit")
+            submitClick = $("#submit"),
+
+            chekResultTable = $(".table-responsive")
+
+
 
     ;
      CalendarComponent calendarComponent = new CalendarComponent();
@@ -102,7 +106,7 @@ public class RegistrarionPage {
     }
 
     public  RegistrarionPage checkResult(String key, String value){
-        $(".table-responsive").$(byText(key)).parent().shouldHave(text(value));
+        chekResultTable.$(byText(key)).parent().shouldHave(text(value));
         return  this;
     }
 
