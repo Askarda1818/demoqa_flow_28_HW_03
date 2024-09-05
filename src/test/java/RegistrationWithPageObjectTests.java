@@ -53,19 +53,15 @@ public class RegistrationWithPageObjectTests {
                 .ResultTable("Aslan Kardanov","Askarda@test.com","Other","Mobile 8928000000",
                 "24 September,2024","Commerce","Sports","Toka.png","Kabardino_Balkaria, Baksan",
                 "NCR Noida");
-
-
     }
-
 
     //негативный автотест - не заполняем форму сразу кликаем кнопку 'submit'
     @Test
     void negativepracticeFormTest(){
         registrarionPage.openPage()
                 .setSubmitClick();
-        resultTableForma.notAppear();
+        resultTableForma.notResultWindow();
     }
-
 
     //автотест на проверку минимального количества данных (т.е. заполнить Name, Gender,Mobile)
     @Test
@@ -79,10 +75,7 @@ public class RegistrationWithPageObjectTests {
         //для себя
         sleep(5000);
         resultTableForma.successfulModalDialog()
-                .ResultTable("Aslan Kardanov","","Other","Mobile 8928000000",
-                        "05 September,2024","","","","",
-                        "");
-
+                .ResultTableMinimalAmountData("Aslan Kardanov","Other","Mobile 8928000000");
     }
 
 

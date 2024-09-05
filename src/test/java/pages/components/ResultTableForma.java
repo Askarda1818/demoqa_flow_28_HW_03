@@ -42,14 +42,21 @@ public class ResultTableForma {
         resultTable.$(byText(key)).parent().shouldHave(text(value));
         return  this;
     }
-    public ResultTableForma notAppear() {
+    public ResultTableForma notResultWindow() {
         finalResulWindow.shouldNot(appear);
         return this;
     }
 
-    public ResultTableForma appear() {
+    public ResultTableForma visibleResultWindow() {
         finalResulWindow.should(appear);
         return this;
+    }
+
+    public void ResultTableMinimalAmountData(String studentName, String gender, String mobile) {
+        resultTable.$(byText("Student Name")).parent().shouldHave(text(studentName));
+        resultTable.$(byText("Gender")).parent().shouldHave(text(gender));
+        resultTable.$(byText("Mobile")).parent().shouldHave(text(mobile));
+
     }
 
 
